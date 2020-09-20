@@ -6,22 +6,22 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @nearest_stations = @property.nearest_stations
   end
 
   def new
     @property = Property.new
-    @property.build_nearest_station
+    2.times { @property.nearest_stations.build }
   end
 
   def edit
+    @property.nearest_stations.build
   end
 
   def create
     @property = Property.new(property_params)
     respond_to do |format|
       if @property.save
-        reset_session
-        session[:property] = @property.id
         format.html { redirect_to @property, notice: '登録が完了しました' }
         format.json { render :show, status: :created, location: @property }
       else
@@ -46,7 +46,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property.destroy
     respond_to do |format|
-      format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
+      format.html { redirect_to properties_url, notice: '削除しました' }
       format.json { head :no_content }
     end
   end
@@ -59,6 +59,6 @@ class PropertiesController < ApplicationController
 
     def property_params
       params.require(:property).permit(:property_name, :rent, :address, :age, :remarks,
-      nearest_station: [:id, :route, :station, :minnutes_walk, :preperty_id])
+      nearest_station: [:id, :route, :station, :minnutes_walk, :property_id, :_destroy, ],)
     end
 end
