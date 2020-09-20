@@ -59,6 +59,6 @@ class PropertiesController < ApplicationController
 
     def property_params
       params.require(:property).permit(:property_name, :rent, :address, :age, :remarks,
-      nearest_station: [:id, :route, :station, :minnutes_walk, :property_id, :_destroy, ],)
+      nearest_stations_attributes: [:id, :route, :station, :minnutes_walk, :property_id, :_destroy, ],)
     end
 end
