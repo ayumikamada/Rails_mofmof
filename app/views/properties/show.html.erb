@@ -9,7 +9,7 @@
 
 <p>
   <strong>賃料:</strong>
-  <%= @property.rent %>
+  <%= @property.rent %>円
 </p>
 
 <p>
@@ -19,13 +19,15 @@
 
 <p>
   <strong>築年数:</strong>
-  <%= @property.age %>
+  <%= @property.age %>年
 </p>
 
 <p>
   <strong>備考:</strong>
   <%= @property.remarks %>
 </p>
+
+<p class="line"></p>
 
 <% @nearest_stations.each_with_index do |nearest_station, i|%>
 
@@ -49,5 +51,5 @@
 </p>
 <% end %>
 
-<%= link_to 'Edit', edit_property_path(@property) %> |
-<%= link_to 'Back', properties_path %>
+<%= link_to '編集', edit_property_path(@property) %> |
+<%= link_to '戻る', properties_path %>

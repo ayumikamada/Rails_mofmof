@@ -31,6 +31,7 @@
     <%= form.label :remarks, '備考' %><br>
     <%= form.text_area :remarks %>
   </div>
+  <p class="line"></p>
   <% i= 0 %>
     <%= form.fields_for :nearest_stations do |nearest_station| %>
       <h2>最寄駅<%= i = i+1 %></h2>
